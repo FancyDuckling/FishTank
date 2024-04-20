@@ -6,18 +6,37 @@ public class PoopWater : MonoBehaviour
 {
     public Material material;
     public Color[] colors;
+    public float time; //time between changing colors
+    public bool tankIsClean = false;
+    public bool fishIsFull = false;
+    public GameObject poop;
+    
     private int curentColorIndex = 0;
     private int targetColorIndex = 1;
     private float targetPoint;
-    public float time;
     
- 
+   void Start()
+    {
+        targetColorIndex = 0;
+    }
+    
+
     void Update()
     {
-        Transition();
+        TransitionToClean();
+
+
+        if (fishIsFull)
+            TransitionToDirty();
+        else
+            targetColorIndex = 0;
+
+
+
+
     }
 
-    void Transition()
+    void TransitionToDirty()
     {
         targetPoint += Time.deltaTime/time;
         material.color = Color.Lerp(colors[curentColorIndex], colors[targetColorIndex],targetPoint); 
@@ -28,7 +47,28 @@ public class PoopWater : MonoBehaviour
             curentColorIndex = targetColorIndex;
             targetColorIndex++;
             if (targetColorIndex == colors.Length)
-                targetColorIndex = 0;
+            {
+                targetColorIndex = 3;
+                tankIsClean = false;
+                fishIsFull = false;
+            }
+            
+           
+                
         }
+    }
+
+    void TransitionToClean()
+    {
+       if (Input.GetKey(KeyCode.E))
+       {
+            
+            tankIsClean = true;
+            
+
+            targetColorIndex = 0;
+       }
+       
+
     }
 }
