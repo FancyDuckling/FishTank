@@ -23,9 +23,20 @@ public class FeedTheFish : MonoBehaviour
     
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.F))
+        {
+            feedTheFish = true;
+            FeedFish();
+        }
+        else
+        {
+            HungerTimer();
+            feedTheFish=false;
+            poopWaterScript.fishIsFull = true;
+        }
 
-        if (feedTheFish)
+
+        /* if (feedTheFish)
         {
             FeedFish();
            
@@ -36,7 +47,7 @@ public class FeedTheFish : MonoBehaviour
             
             HungerTimer();
 
-        }
+        }*/
 
 
     }

@@ -17,19 +17,46 @@ public class PoopWater : MonoBehaviour
     
    void Start()
     {
-        targetColorIndex = 0;
+        tankIsClean = true;
     }
     
 
     void Update()
     {
-        TransitionToClean();
+        if (Input.GetKey(KeyCode.E))
+        {
+            tankIsClean = true;
+        }
+
+        if (Input.GetKey(KeyCode.F))
+        {
+            tankIsClean = false;
+        }
+
+
+        if (!tankIsClean)
+        {
+            TransitionToDirty();
+        }
+
+        if (tankIsClean)
+        {
+            TransitionToClean();
+        }
+       
+        
+            
+        
+        
+        
+        
+        /*TransitionToClean();
 
 
         if (fishIsFull)
             TransitionToDirty();
         else
-            targetColorIndex = 0;
+            targetColorIndex = 0;*/
 
 
 
@@ -39,9 +66,20 @@ public class PoopWater : MonoBehaviour
     void TransitionToDirty()
     {
         targetPoint += Time.deltaTime/time;
-        material.color = Color.Lerp(colors[curentColorIndex], colors[targetColorIndex],targetPoint); 
+        material.color = Color.Lerp(colors[curentColorIndex], colors[targetColorIndex],targetPoint);
 
         if (targetPoint >= 1f)
+        {
+            targetPoint = 0f;
+            curentColorIndex = targetColorIndex;
+            targetColorIndex++;
+            if (targetColorIndex >= colors.Length)
+            {
+                targetColorIndex = 3;
+            }
+        }
+
+        /*if (targetPoint >= 1f)
         {
             targetPoint = 0f;
             curentColorIndex = targetColorIndex;
@@ -49,26 +87,30 @@ public class PoopWater : MonoBehaviour
             if (targetColorIndex == colors.Length)
             {
                 targetColorIndex = 3;
-                tankIsClean = false;
+                
                 
             }
             
            
                 
-        }
+        }*/
     }
 
     void TransitionToClean()
     {
-       if (Input.GetKey(KeyCode.E))
-       {
-            
-            tankIsClean = true;
-            
+        //material.color = colors[0];
 
-            targetColorIndex = 0;
-       }
-       
+        targetPoint += Time.deltaTime / time;
+        material.color = Color.Lerp(colors[curentColorIndex], colors[0], targetPoint);
+
+        if (targetPoint >= 1f)
+        {
+            targetPoint = 0f;
+            curentColorIndex = 0;
+            targetColorIndex = 1;
+        }
+
+
 
     }
 }
