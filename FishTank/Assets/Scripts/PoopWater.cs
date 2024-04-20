@@ -27,12 +27,12 @@ public class PoopWater : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.E)) //Clean the aquarium
+       /* if (Input.GetKey(KeyCode.E)) //Clean the aquarium
         {
             tankIsClean = true;
             
 
-        }
+        }*/
 
         if (Input.GetKey(KeyCode.F)) //feed the fish
         {
