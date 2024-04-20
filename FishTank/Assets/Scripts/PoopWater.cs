@@ -50,7 +50,7 @@ public class PoopWater : MonoBehaviour
             {
                 targetColorIndex = 3;
                 tankIsClean = false;
-                fishIsFull = false;
+                
             }
             
            

@@ -9,7 +9,7 @@ public class FeedTheFish : MonoBehaviour
     public float hunger;
     public float maxHunger = 100f;
     public bool feedTheFish = false;
-    public float delayHunger = 5f;
+    
 
     public PoopWater poopWaterScript;
 
@@ -30,9 +30,13 @@ public class FeedTheFish : MonoBehaviour
             FeedFish();
            
         }
-            
+
         else
+        {
+            
             HungerTimer();
+
+        }
 
 
     }
@@ -53,6 +57,7 @@ public class FeedTheFish : MonoBehaviour
 
     void HungerTimer()
     {
+        
         hungerBar.value = hunger;
         hunger -= 1f * Time.deltaTime;
 
