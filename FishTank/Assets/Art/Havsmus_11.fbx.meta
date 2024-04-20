@@ -3,7 +3,12 @@ guid: 5dcadf35c08e3e747a695a18a4ce185a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Havsmus_Albedo_Mat
+    second: {fileID: 2100000, guid: 562a7011dcaee7342a6dd6377f7596bd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
