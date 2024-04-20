@@ -11,7 +11,7 @@ public class PoopWater : MonoBehaviour
     public bool fishIsFull = false;
     public GameObject poop;
     public GameObject fish;
-    public GameObject cleaningEquipment;
+
     
     private int curentColorIndex = 0;
     private int targetColorIndex = 1;
@@ -58,7 +58,7 @@ public class PoopWater : MonoBehaviour
     {
         targetPoint += Time.deltaTime/time;
         material.color = Color.Lerp(colors[curentColorIndex], colors[targetColorIndex],targetPoint);
-       // PlacePoop();
+       // PlacePoop(); haha funny effect
         if (targetPoint >= 1f)
         {
             PlacePoop();
@@ -99,19 +99,11 @@ public class PoopWater : MonoBehaviour
     void PlacePoop()
     {
         
-        GameObject poops = Instantiate(poop, fish.transform.position, Quaternion.identity);
-        
+     GameObject poops = Instantiate(poop, fish.transform.position, Quaternion.identity);
+
 
     }
 
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("CleaningEquipment"))
-        {
-            Destroy(gameObject);
-        }
-            
-        
-    }
+   
 }
