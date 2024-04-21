@@ -7,6 +7,7 @@ public class FeedTheFish : MonoBehaviour
 {
     public Slider hungerBar;
     public float hunger;
+    public float speed = 1;
     public float maxHunger = 100f;
     public bool feedTheFish = false;
     
@@ -70,7 +71,7 @@ public class FeedTheFish : MonoBehaviour
     {
         
         hungerBar.value = hunger;
-        hunger -= 1f * Time.deltaTime;
+        hunger -= speed * Time.deltaTime;
 
         
 

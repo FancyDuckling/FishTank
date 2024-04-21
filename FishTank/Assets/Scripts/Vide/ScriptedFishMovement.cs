@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-
+using DG.Tweening;
+using UnityEngine.UIElements;
 public class ScriptedFishMovement : MonoBehaviour
 {
-    [SerializeField, Tooltip("The fish move speed")] float speed = 5.0f; // The speed at which the fish moves.
+    [SerializeField, Tooltip("The fish move speed")] float speed = 1.0f; // The speed at which the fish moves.
 
     private Vector3 moveDirection = Vector3.zero; // Current movement direction.
 
@@ -28,13 +28,26 @@ public class ScriptedFishMovement : MonoBehaviour
         Debug.Log(Y);
         Debug.Log(Z);
         moveDirection = new Vector3(X, Y, Z);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), 0.15f);
+
+       // transform.DORotate(moveDirection.normalized, 0.5f);
+
+        Vector3 RightDir = moveDirection - transform.position;
+
+        Vector3 ForwardDir = Vector3.Cross(RightDir, Vector3.up);
+
+       
+
+        transform.rotation = Quaternion.LookRotation(ForwardDir);
+        transform.DOMove(moveDirection,speed).SetEase(Ease.InOutSine).OnComplete(MoveToGoal);
+
+
+
     }
 
     /// <summary>
     /// FixedUpdate is called at a consistent rate. It handles physics-based movement.
     /// </summary>
-    void FixedUpdate()
+    void Eventual()
     {
         // MAX Y, MIN Y : 8.63 , 0.73 
         // MAX X, MIN X : 7.4 , 1
@@ -45,6 +58,7 @@ public class ScriptedFishMovement : MonoBehaviour
         //Mathf.Clamp(movement.x, 1, 7.4f);
         //Mathf.Clamp(movement.y, 0.73f, 8.63f);
         //Mathf.Clamp(movement.z, -7, 7);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), 0.15f);
         transform.position = Vector3.MoveTowards(transform.position, movement, speed * Time.fixedDeltaTime);
         // Check if the position of the cube and sphere are approximately equal.
         if (Vector3.Distance(transform.position, movement) < 0.001f)

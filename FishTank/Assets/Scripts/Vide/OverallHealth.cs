@@ -14,12 +14,13 @@ public class OverallHealth : MonoBehaviour
     int lastIndex;
     bool firstTime = true;
     int timer = 0;
+    FeedTheFish hungerControl;
     void Start()
     {
         idealTemp = (int)Random.Range(10, tempBar.maxValue);
         Debug.Log(idealTemp);
         StartCoroutine(Timer());
-        
+        hungerControl = GetComponent<FeedTheFish>();
     }
     IEnumerator Timer()
     {
@@ -32,7 +33,7 @@ public class OverallHealth : MonoBehaviour
     public void UpdateOverallHealth()
     {
         var diff = idealTemp - tempBar.value;
-        Debug.Log("Diff Value : "+ diff);
+        //Debug.Log("Diff Value : "+ diff);
         if( diff == 0 )
         {
             TransitionColor(10, 3);   
@@ -98,7 +99,10 @@ public class OverallHealth : MonoBehaviour
             idealTemp = (int)Random.Range(10, tempBar.maxValue);
 
         }
-        Debug.Log("CurrentColor " + initialValue);
+       // Debug.Log("CurrentColor " + initialValue);
+       // Debug.Log("NewValue " + newValue);
+
+        hungerControl.speed = (4 - index)* (4 - index);
     }
 
     }
