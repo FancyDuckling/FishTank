@@ -34,7 +34,12 @@ public class Title : MonoBehaviour
     /// </summary>
     public void OpenCredits()
     {
-        FadeOut(() => SceneManager.LoadScene("Credit Scene"));
+        FadeOut(() => SceneManager.LoadScene("CreditScene"));
+    }
+
+    public void BackToTitle()
+    {
+        FadeOut(() => SceneManager.LoadScene("Title"));
     }
 
     /// <summary>
