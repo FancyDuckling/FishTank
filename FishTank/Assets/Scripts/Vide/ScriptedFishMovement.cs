@@ -10,10 +10,13 @@ public class ScriptedFishMovement : MonoBehaviour
     [SerializeField, Tooltip("The fish move speed")] public float speed = 1.0f; // The speed at which the fish moves.
 
     private Vector3 moveDirection = Vector3.zero; // Current movement direction.
+    private Animator animator;
 
     private void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
         MoveToGoal();
+        
     }
     /// <summary>
     /// Update is called once per frame. It captures player input from the keyboard.
@@ -40,7 +43,7 @@ public class ScriptedFishMovement : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(ForwardDir);
         transform.DOMove(moveDirection,speed).SetEase(Ease.InOutSine).OnComplete(MoveToGoal);
 
-
+        animator.Play("SwimAnim");
 
     }
 
