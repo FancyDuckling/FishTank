@@ -11,7 +11,7 @@ public class SpinDoTween2 : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        transform.DORotate(new Vector3(360, 0, 0), 2.5f, RotateMode.FastBeyond360).SetRelative(true).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+        transform.DORotate(new Vector3(0, 360, 0), 2.5f, RotateMode.FastBeyond360).SetRelative(true).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
     }
 
     // Update is called once per frame

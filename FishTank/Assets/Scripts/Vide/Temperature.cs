@@ -23,10 +23,17 @@ public class Temperature : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             ChangeTemperature(+1);
+
+            //Play UI Temp UP
+            
+            
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             ChangeTemperature(-1);
+
+            //Play UI Temp Down
+            
         }
     }
     public void ChangeTemperature(float value) 

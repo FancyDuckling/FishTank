@@ -456,6 +456,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405233101}
   m_CullTransparentMesh: 1
+--- !u!1 &455390743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dcadf35c08e3e747a695a18a4ce185a, type: 3}
+  m_PrefabInstance: {fileID: 1656510902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &455390746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455390743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f15df5a44fb4d47829e52cc357ecc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+--- !u!95 &455390747
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455390743}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a04e764d3547b484ca3fd51f51d609fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &459231986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1928,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dcadf35c08e3e747a695a18a4ce185a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 455390746}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5dcadf35c08e3e747a695a18a4ce185a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 455390747}
   m_SourcePrefab: {fileID: 100100000, guid: 5dcadf35c08e3e747a695a18a4ce185a, type: 3}
 --- !u!1 &1958925841
 GameObject:
