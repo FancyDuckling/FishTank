@@ -17,7 +17,9 @@ public class PoopWater : MonoBehaviour
     private int targetColorIndex = 1;
     private float targetPoint;
 
-    
+    private int poopsDestroyed = 0;
+
+
 
     void Start()
     {
@@ -48,6 +50,7 @@ public class PoopWater : MonoBehaviour
 
         if (tankIsClean)
         {
+            
             TransitionToClean();
         }
        
@@ -77,9 +80,50 @@ public class PoopWater : MonoBehaviour
 
     void TransitionToClean()
     {
-        
 
         targetPoint += Time.deltaTime / time;
+        material.color = Color.Lerp(colors[curentColorIndex], colors[0], targetPoint);
+
+        if (targetPoint >= 1f)
+        {
+            targetPoint = 0f;
+
+            // Calculate the target color index dynamically based on the current index
+            if (poopsDestroyed % 3 == 0 && poopsDestroyed != 0) // Every three destroyed poops
+            {
+                curentColorIndex--; // Decrease current index
+                if (curentColorIndex < 0) // Clamp the index to 0
+                {
+                    curentColorIndex = 0;
+                }
+            }
+
+            // If tank becomes clean while transitioning, stop at clean color
+            if (tankIsClean)
+            {
+                curentColorIndex = 0;
+            }
+        }
+
+        /* targetPoint += Time.deltaTime / time;
+         material.color = Color.Lerp(colors[curentColorIndex], colors[0], targetPoint);
+
+         if (targetPoint >= 1f)
+         {
+             targetPoint = 0f;
+             curentColorIndex = 0;
+
+             // Calculate the target color index dynamically based on the current index
+             targetColorIndex = curentColorIndex + 1;
+             if (targetColorIndex >= colors.Length)
+             {
+                 targetColorIndex = 1;
+             }
+         }*/
+
+
+
+        /*targetPoint += Time.deltaTime / time;
         material.color = Color.Lerp(colors[curentColorIndex], colors[0], targetPoint);
 
         if (targetPoint >= 1f)
@@ -90,7 +134,7 @@ public class PoopWater : MonoBehaviour
 
             
 
-        }
+        }*/
 
 
 
@@ -98,12 +142,32 @@ public class PoopWater : MonoBehaviour
 
     void PlacePoop()
     {
-        
-     GameObject poops = Instantiate(poop, fish.transform.position, Quaternion.identity);
+        // Stop placing poops if current color index is 3
+        if (curentColorIndex >= 3)
+            return;
 
+        GameObject poops = Instantiate(poop, fish.transform.position, Quaternion.identity);
+        poops.GetComponent<DestroyPoop>().poopWaterScript = this;
 
     }
 
+    public void IncrementPoopsDestroyed()
+    {
+        poopsDestroyed++;
+        if (poopsDestroyed >= 3) 
+        {
+            tankIsClean = true;
+            poopsDestroyed = 0; // Reset the counter
+        }
+    }
 
-   
+
+    /*void DestroyAllPoop()
+    {
+        GameObject[] allPoops = GameObject.FindGameObjectsWithTag("Poop"); // Assuming the poop GameObjects have a "Poop" tag
+        foreach (GameObject poopObj in allPoops)
+        {
+            Destroy(poopObj);
+        }
+    }*/
 }
