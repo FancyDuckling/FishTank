@@ -15,7 +15,7 @@ public class OverallHealth : MonoBehaviour
     bool firstTime = true;
     FeedTheFish hungerControl;
     public PoopWater water;
-    LifeSystem lifeSystem;
+    public LifeSystem lifeSystem;
     public ScriptedFishMovement fish;
     void Start()
     {
@@ -24,7 +24,6 @@ public class OverallHealth : MonoBehaviour
         StartCoroutine(Timer());
         hungerControl = GetComponent<FeedTheFish>();
         PoopWater water = GetComponent<PoopWater>();
-        lifeSystem = GetComponent<LifeSystem>();
     }
     IEnumerator Timer()
     {
@@ -39,7 +38,7 @@ public class OverallHealth : MonoBehaviour
        if (hungerBar.value == 0)
         {
             lifeSystem.TakeDamage();
-            NewFish();
+            NewFish(false);
         }
        
     }
@@ -112,7 +111,7 @@ public class OverallHealth : MonoBehaviour
         {
             material.color = colors[4];
             if (water.tankIsClean == true)
-                NewFish();
+                NewFish(true);
 
         }
        // Debug.Log("CurrentColor " + initialValue);
@@ -123,9 +122,14 @@ public class OverallHealth : MonoBehaviour
 
 
     }
-    void NewFish()
+    void NewFish(bool Success)
     {
-        hungerControl.hunger = hungerBar.maxValue;
+        hungerControl.FeedFish();
+        water.tankIsClean = false;
         idealTemp = (int)Random.Range(10, tempBar.maxValue);
+        if(Success ==true)
+        {
+            lifeSystem.successfulFish++;
+        }
     }
 }

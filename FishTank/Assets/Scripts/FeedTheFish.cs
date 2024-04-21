@@ -53,7 +53,7 @@ public class FeedTheFish : MonoBehaviour
 
     }
 
-    void FeedFish()
+    public void FeedFish()
     {
         hunger = maxHunger;
         feedTheFish = false;

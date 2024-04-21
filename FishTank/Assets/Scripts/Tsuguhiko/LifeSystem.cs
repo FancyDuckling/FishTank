@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -15,7 +16,7 @@ public class LifeSystem : MonoBehaviour
     [SerializeField]
     [Tooltip("Current number of lives remaining.")]
     private int currentLives; // Current count of remaining lives
-
+    public int successfulFish;
     /// <summary>
     /// Initializes life count based on the number of assigned life images.
     /// </summary>
@@ -31,6 +32,11 @@ public class LifeSystem : MonoBehaviour
     /// </summary>
     public void TakeDamage()
     {
+        // Check for game over condition
+        if (currentLives == 0)
+        {
+            GameOver();
+        }
         if (currentLives <= 0) return; // Do nothing if no lives are left
 
         // Decrement the life count
@@ -50,6 +56,7 @@ public class LifeSystem : MonoBehaviour
     /// </summary>
     void GameOver()
     {
+        SceneManager.LoadScene("EndScreen");
         Debug.Log("Game Over!");
         // Implement game over screen display or other game over behavior here
     }
