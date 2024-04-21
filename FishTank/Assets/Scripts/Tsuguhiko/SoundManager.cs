@@ -41,7 +41,7 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            musicSource.loop = false; // Ensures that the music loops continuously.
+            musicSource.loop = true; // Ensures that the music loops continuously.
         }
         else if (instance != this)
         {
@@ -51,21 +51,19 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         Debug.Log(musicSource.isPlaying);
+        PlaySoundEffect(0);
         StopMusic();
-        PlayMusic(0);
-        transform.DOMove(transform.position,1).SetLoops(-1).OnStepComplete(CheckIfIntroIsplaying);
+        transform.DOMove(transform.position,21.9f).OnComplete(CheckIfIntroIsplaying);
     }
     
 
     void CheckIfIntroIsplaying()
     {
-        if(musicSource.isPlaying == false)
-        {
-            StopMusic();
-            PlayMusic(1);
+        
+            PlayMusic(0);
             Debug.Log("New Music Playing");
-            musicSource.loop = true;
-        }
+            musicSource.loop = false;
+        
     }
     /// <summary>
     /// Plays a sound effect from the soundEffects array at the specified index.

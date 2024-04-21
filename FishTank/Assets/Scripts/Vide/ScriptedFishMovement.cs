@@ -7,7 +7,7 @@ using DG.Tweening;
 using UnityEngine.UIElements;
 public class ScriptedFishMovement : MonoBehaviour
 {
-    [SerializeField, Tooltip("The fish move speed")] float speed = 1.0f; // The speed at which the fish moves.
+    [SerializeField, Tooltip("The fish move speed")] public float speed = 1.0f; // The speed at which the fish moves.
 
     private Vector3 moveDirection = Vector3.zero; // Current movement direction.
 

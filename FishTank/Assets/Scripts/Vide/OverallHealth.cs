@@ -13,22 +13,37 @@ public class OverallHealth : MonoBehaviour
     int initialValue;
     int lastIndex;
     bool firstTime = true;
-    int timer = 0;
     FeedTheFish hungerControl;
+    public PoopWater water;
+    LifeSystem lifeSystem;
+    public ScriptedFishMovement fish;
     void Start()
     {
         idealTemp = (int)Random.Range(10, tempBar.maxValue);
         Debug.Log(idealTemp);
         StartCoroutine(Timer());
         hungerControl = GetComponent<FeedTheFish>();
+        PoopWater water = GetComponent<PoopWater>();
+        lifeSystem = GetComponent<LifeSystem>();
     }
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(0.5f);
         UpdateOverallHealth();
         StartCoroutine(Timer());
+        CheckIfAlive();
     }
-  
+
+    private void CheckIfAlive()
+    {
+       if (hungerBar.value == 0)
+        {
+            lifeSystem.TakeDamage();
+            NewFish();
+        }
+       
+    }
+
     // Update is called once per frame
     public void UpdateOverallHealth()
     {
@@ -96,13 +111,21 @@ public class OverallHealth : MonoBehaviour
         if (initialValue == 100) 
         {
             material.color = colors[4];
-            idealTemp = (int)Random.Range(10, tempBar.maxValue);
+            if (water.tankIsClean == true)
+                NewFish();
 
         }
        // Debug.Log("CurrentColor " + initialValue);
        // Debug.Log("NewValue " + newValue);
 
         hungerControl.speed = (4 - index)* (4 - index);
-    }
+        fish.speed = 1 / hungerControl.speed;
+
 
     }
+    void NewFish()
+    {
+        hungerControl.hunger = hungerBar.maxValue;
+        idealTemp = (int)Random.Range(10, tempBar.maxValue);
+    }
+}
