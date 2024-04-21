@@ -2342,7 +2342,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 754749681}
   m_FillRect: {fileID: 1731866231}
   m_HandleRect: {fileID: 754749680}
@@ -2773,6 +2773,7 @@ MonoBehaviour:
   - {fileID: 985143109}
   - {fileID: 1706798614}
   currentLives: 0
+  successfulFish: 0
 --- !u!114 &1687113300
 MonoBehaviour:
   m_ObjectHideFlags: 0
