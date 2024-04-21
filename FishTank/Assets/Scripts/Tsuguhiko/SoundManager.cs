@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// Manages sound playback throughout the game, including music and sound effects.
@@ -40,14 +41,32 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            musicSource.loop = true; // Ensures that the music loops continuously.
+            musicSource.loop = false; // Ensures that the music loops continuously.
         }
         else if (instance != this)
         {
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        Debug.Log(musicSource.isPlaying);
+        StopMusic();
+        PlayMusic(0);
+        transform.DOMove(transform.position,1).SetLoops(-1).OnStepComplete(CheckIfIntroIsplaying);
+    }
+    
 
+    void CheckIfIntroIsplaying()
+    {
+        if(musicSource.isPlaying == false)
+        {
+            StopMusic();
+            PlayMusic(1);
+            Debug.Log("New Music Playing");
+            musicSource.loop = true;
+        }
+    }
     /// <summary>
     /// Plays a sound effect from the soundEffects array at the specified index.
     /// </summary>
@@ -67,10 +86,12 @@ public class SoundManager : MonoBehaviour
     /// <param name="index">Index of the music track to play in the musicTracks array.</param>
     public void PlayMusic(int index)
     {
-        if (index >= 0 && index < musicTracks.Length && !musicSource.isPlaying)
+       
+        if (index >= -1 && index < musicTracks.Length && !musicSource.isPlaying)
         {
             musicSource.clip = musicTracks[index];
             musicSource.Play();
+            Debug.Log("Changes music to: " + index);
         }
     }
 
@@ -82,9 +103,10 @@ public class SoundManager : MonoBehaviour
         if (musicSource.isPlaying)
         {
             musicSource.Stop();
+           
         }
     }
-
+    
     /// <summary>
     /// Sets the volume of the background music.
     /// </summary>
