@@ -26,7 +26,7 @@ public class Title : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        FadeOut(() => SceneManager.LoadScene("MainScene"));
+        FadeOut(() => SceneManager.LoadScene("Vide"));
     }
 
     /// <summary>

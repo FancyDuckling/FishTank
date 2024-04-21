@@ -19,11 +19,14 @@ public class PoopWater : MonoBehaviour
 
     private int poopsDestroyed = 0;
 
-
+    // Reference to the SoundManager
+    private SoundManager soundManager;
 
     void Start()
     {
         tankIsClean = true;
+        // Get reference to the SoundManager instance
+        soundManager = SoundManager.Instance;
     }
     
 
@@ -149,11 +152,25 @@ public class PoopWater : MonoBehaviour
         GameObject poops = Instantiate(poop, fish.transform.position, Quaternion.identity);
         poops.GetComponent<DestroyPoop>().poopWaterScript = this;
 
+        // Play random sound between index 3-6
+        if (soundManager != null)
+        {
+            int randomSoundIndex = Random.Range(3, 6); 
+            soundManager.PlaySoundEffect(randomSoundIndex);
+        }
+
     }
 
     public void IncrementPoopsDestroyed()
     {
         poopsDestroyed++;
+        // Play random sound between index 3-6
+        if (soundManager != null)
+        {
+            int randomSoundIndex = Random.Range(7, 9);
+            soundManager.PlaySoundEffect(randomSoundIndex);
+        }
+
         if (poopsDestroyed >= 3) 
         {
             tankIsClean = true;

@@ -963,6 +963,107 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1136122310
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2114350096598655561, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_Name
+      value: ShouldExistAlways 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114350096598655561, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -70.50427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 23.30792
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20.658083
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927544056907389196, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7c95197e9a687924c94ba9db27d60dff, type: 3}
 --- !u!1 &1371874444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,11 +1333,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Scientist that inspired the game
 
+    Catharina Olsson
+
 
     Other
 
-    Fish icon for health
-    designed by Freepik
+    Fish
+    icon for health designed by Freepik
 
 
 
@@ -1460,3 +1563,4 @@ SceneRoots:
   - {fileID: 683894017}
   - {fileID: 956478702}
   - {fileID: 1130892374}
+  - {fileID: 1136122310}

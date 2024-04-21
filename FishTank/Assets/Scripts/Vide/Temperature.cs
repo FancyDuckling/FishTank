@@ -10,10 +10,16 @@ public class Temperature : MonoBehaviour
     public Slider tempMeterSlider;
     public TextMeshProUGUI text;
     private float lastMeasuredTemp;
+    // Reference to the SoundManager
+    private SoundManager soundManager;
+
     void Start()
     {
         tempMeterSlider.value = Random.Range(0, 51);
         text.text = tempMeterSlider.value.ToString();
+
+        // Get reference to the SoundManager instance
+        soundManager = SoundManager.Instance;
     }
 
 
@@ -25,15 +31,25 @@ public class Temperature : MonoBehaviour
             ChangeTemperature(+1);
 
             //Play UI Temp UP
-            
-            
+            // Play sound effect for temperature increase
+            if (soundManager != null)
+            {
+                soundManager.PlaySoundEffect(2); // Adjust the index based on your sound effects array
+            }
+
+
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             ChangeTemperature(-1);
 
             //Play UI Temp Down
-            
+            // Play sound effect for temperature decrease
+            if (soundManager != null)
+            {
+                soundManager.PlaySoundEffect(1); // Adjust the index based on your sound effects array
+            }
+
         }
     }
     public void ChangeTemperature(float value) 
